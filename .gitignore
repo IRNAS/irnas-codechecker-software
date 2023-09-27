@@ -43,3 +43,6 @@ share/python-wheels/
 
 #envrc
 .envrc
+
+# Ignore Codechecker files
+workspace

@@ -1,0 +1,3 @@
+#! /usr/bin/env bash
+
+docker compose -f $(dirname "$0")/../docker-compose.yml down
