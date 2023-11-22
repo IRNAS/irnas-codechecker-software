@@ -125,8 +125,8 @@ Steps:
 For example:
 
 ```
-CODECHECKER_CREDENTIALS={"client_autologin":true,"credentials":{"20.10.30.40:8001":"user:password"}}
-CODECHECKER_SERVER_URL=20.10.30.40:8001
+CODECHECKER_CREDENTIALS={"client_autologin":true,"credentials":{"<url_to_server>":"<username>:<password>"}}
+CODECHECKER_SERVER_URL=<url_to_server>
 ```
 
 ### Setting up authentication in GitHub Actions
