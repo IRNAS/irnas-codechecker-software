@@ -16,6 +16,8 @@ running and maintaining CodeChecker server.
   - [Setting up authentication in GitHub Actions](#setting-up-authentication-in-github-actions)
 - [Suggested user and group setup](#suggested-user-and-group-setup)
 - [Creating new products - Codechecker integration in East](#creating-new-products---codechecker-integration-in-east)
+  - [New product](#new-product)
+  - [Product permissions](#product-permissions)
 - [Relevant documentation](#relevant-documentation)
 
 <!-- vim-markdown-toc -->
@@ -202,31 +204,52 @@ basis.
 
 ## Creating new products - Codechecker integration in East
 
-To create a new product navigate to your CodeChecker server and login as
-`admin`.
+### New product
 
-1. Click on the `New Product` button and fill in the required fields.
+To create a new product navigate to your CodeChecker server and login.
 
-Make sure that the URL endpoint of the product matches the exact name of the git
-repository. This is needed as the `east codechecker store` command finds out the
-name of the git repository and uploads any analyses to the
-`<server_url>/<git_respository>` endpoint.
+<!-- prettier-ignore -->
+> [!Note]
+>
+> For the IRNAS server URL and password, check 1Password by searching
+> `irnas_user`.
 
-For example, if you are creating a new product for the repository hosted on
-`https://github.com/CoolOrg/some-cool-project-repo`, then URL endpoint _must_ be
-`some-cool-project-repo`.
+1. Click on the **New Product** button and fill in the fields _URL endpoint_,
+   _Display name_ with the name of the repository. For example, if the name of
+   the repository is `irnas-example-repository`, then both fields should match
+   it (see screenshot below).
+2. Set _Information Classification_ to _Open classified_.
+3. Select the _SQLite_ database type and name your database the same as _URL
+   endpoint_ and _Display name_ fields. Click **Save**.
 
-2. Select the `SQLite` database type and name your database. Click `Save`.
-3. Click on the `Edit` button for the newly created product.
-4. Add the `ci_runners` group and assign the `PRODUCT_ACCESS` and
-   `PRODUCT_STORE` permissions to it. This will allow the CI runners to store
-   and access analyses for this product.
+<p align="center">
+ <img src="./images/codechecker_new_product.png" width="500" height="500">
+</p>
+
+<!-- prettier-ignore -->
+> [!Note]
+> Make sure that the _URL endpoint_ of the product matches the exact name
+> of the git repository. This is needed as the `east codechecker store` command
+> finds out the name of the git repository and uploads any analyses to the
+> `<server_url>/<git_respository>` endpoint.
+
+### Product permissions
+
+You must give product permissions whenever you need user to access that product.
+This can be done by clicking on the **pencil** icon on the right side of the
+product row and selecting the _PERMISSIONS_ tab.
+
+You can assign permissions on the **user level** or **group level**. For bot
+users (usually CI accounts) is enough to have _PRODUCT_ACCESS_ and
+_PRODUCT_STORE_ permissions.
+
+<!-- prettier-ignore -->
+> [!Note]
+>
+> For the GitHub Actions developed by IRNAS is required to give group
+> `ci_users` _PRODUCT_ACCESS_ and _PRODUCT_STORE_ permissions. See image below.
 
 ![Product permissions](./images/product-group-permissions.png)
-
-5. To give users permissions to access the product, repeat step 4. but add the
-   `users` group instead of `ci_runners`. When assigning permissions assign the
-   `PRODUCT_ACCESS` and `PRODUCT_VIEW` permissions to the `users` group.
 
 ## Relevant documentation
 
