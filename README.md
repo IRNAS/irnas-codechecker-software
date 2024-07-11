@@ -112,8 +112,9 @@ passwords `admin_pass` and `user_pass` respectively. `admin` belongs to a groups
 }
 ```
 
-**Important**: When choosing passwords, use either 1Password generator, or some
-other password generator.
+**Important**: When choosing passwords, use either
+[1Password generator](https://1password.com/password-generator/), or some other
+password generator.
 
 ### Setting up command line access as a user
 
@@ -185,14 +186,14 @@ basis.
   "enabled" : true,
   "auths" : [
       "admin:admin_pass",
-      "user_1:user1_pass"
-      "user_2:user2_pass"
+      "user_1:user1_pass",
+      "user_2:user2_pass",
       "ci_runner:ci_runner_pass"
   ],
   "groups" : {
       "admin" : ["admin"],
-      "user_1" : ["users"]
-      "user_2" : ["users"]
+      "user_1" : ["users"],
+      "user_2" : ["users"],
       "ci_runner" : ["ci_runners"]
   }
 }
